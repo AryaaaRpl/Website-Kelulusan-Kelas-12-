@@ -1,188 +1,131 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden py-10 md:py-20">
+<div class="min-h-[100dvh] flex flex-col items-center justify-start sm:justify-center px-4 relative overflow-hidden py-6 sm:py-12">
     <!-- Decorative Elements -->
-    <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
-    <div class="absolute bottom-20 right-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+        <div class="absolute top-10 -left-10 w-48 h-48 sm:w-72 sm:h-72 bg-blue-500/10 rounded-full blur-[80px] sm:blur-3xl animate-float"></div>
+        <div class="absolute bottom-10 -right-10 w-64 h-64 sm:w-96 sm:h-96 bg-indigo-500/10 rounded-full blur-[80px] sm:blur-3xl animate-float" style="animation-delay: -3s;"></div>
+    </div>
     
     <!-- Back Button -->
-    <div class="absolute top-6 left-6 z-10">
-        <a href="{{ route('home') }}" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-4 py-2 rounded-xl transition-all duration-300">
+    <div class="w-full max-w-2xl mb-6 relative z-10">
+        <a href="{{ route('home') }}" class="inline-flex items-center gap-2 text-white/80 hover:text-white bg-white/5 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10 transition-all hover:bg-white/10">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
-            <span class="font-medium">Kembali</span>
+            <span class="font-semibold text-sm">Kembali</span>
         </a>
     </div>
 
     <!-- Result Card -->
     <div class="w-full max-w-2xl relative z-10">
         @if($siswa['status'] === 'LULUS')
-        <!-- LULUS State - SNBT Style -->
-        <div class="card-glass rounded-3xl overflow-hidden glow-effect">
+        <!-- LULUS State - Premium SNBT Style -->
+        <div class="card-glass rounded-[2.5rem] overflow-hidden glow-effect border-0">
             <!-- Success Header -->
-            <div class="status-lulus px-6 py-8 text-center">
-                <div class="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-3">
-                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
+            <div class="status-lulus px-6 py-10 sm:py-12 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                <div class="relative z-10">
+                    <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-md rounded-full mb-4 animate-bounce">
+                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-2 tracking-tight">
+                        Selamat! 🎉
+                    </h2>
+                    <p class="text-white/90 text-sm sm:text-base font-medium uppercase tracking-widest">
+                        Anda Dinyatakan Lulus
+                    </p>
                 </div>
-                <h2 class="text-xl md:text-3xl font-bold text-white mb-2">
-                    Selamat! 🎉
-                </h2>
-                <p class="text-white/90 text-sm">
-                    Anda Berhasil Diterima
-                </p>
             </div>
             
             <!-- Student Info -->
-            <div class="px-6 py-8">
-                <div class="space-y-4">
-                    <div class="bg-gray-50 rounded-xl p-4">
-                        <div class="flex items-center gap-2 mb-2">
-                            <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
-                                </svg>
-                            </div>
-                            <span class="text-gray-500 text-xs font-medium">NISN</span>
-                        </div>
+            <div class="px-6 sm:px-10 py-8 sm:py-10 bg-white">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+                        <span class="text-gray-400 text-[10px] uppercase font-bold tracking-widest block mb-1">NISN</span>
                         <div class="text-lg font-bold text-gray-800">{{ $siswa['nisn'] }}</div>
                     </div>
                     
-                    <div class="bg-gray-50 rounded-xl p-4">
-                        <div class="flex items-center gap-2 mb-2">
-                            <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                                <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                </svg>
-                            </div>
-                            <span class="text-gray-500 text-xs font-medium">Nama Peserta</span>
-                        </div>
-                        <div class="text-base font-bold text-gray-800">{{ $siswa['nama'] }}</div>
+                    <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+                        <span class="text-gray-400 text-[10px] uppercase font-bold tracking-widest block mb-1">Nama Peserta</span>
+                        <div class="text-lg font-bold text-gray-800">{{ $siswa['nama'] }}</div>
                     </div>
                     
-                    <div class="bg-gray-50 rounded-xl p-4">
-                        <div class="flex items-center gap-2 mb-2">
-                            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                            </div>
-                            <span class="text-gray-500 text-xs font-medium">Asal Sekolah</span>
-                        </div>
-                        <div class="text-base font-semibold text-gray-800">SMKS Muhammadiyah 1 Genteng</div>
+                    <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+                        <span class="text-gray-400 text-[10px] uppercase font-bold tracking-widest block mb-1">Sekolah</span>
+                        <div class="text-sm font-bold text-gray-800">SMKS Muhammadiyah 1 Genteng</div>
                     </div>
 
-                    <div class="bg-gray-50 rounded-xl p-4">
-                        <div class="flex items-center gap-2 mb-2">
-                            <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
-                                <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10.5v-17m-3.5 6.5l3-3 3 3"></path>
-                                </svg>
-                            </div>
-                            <span class="text-gray-500 text-xs font-medium">Jurusan Semasa SMK</span>
-                        </div>
-                        <div class="text-base font-semibold text-gray-800">{{ $siswa['sekolah'] }}</div>
+                    <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+                        <span class="text-gray-400 text-[10px] uppercase font-bold tracking-widest block mb-1">Program Keahlian</span>
+                        <div class="text-sm font-bold text-gray-800">{{ $siswa['sekolah'] }}</div>
                     </div>
                 </div>
                 
                 <!-- Success Message -->
-                <div class="mt-6 p-5 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl border border-emerald-100">
-                    <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-emerald-800 mb-1">Selamat!</h4>
-                            <p class="text-gray-600 text-sm">
-                                Selamat! Anda telah lulus dari SMKS Muhammadiyah 1 Genteng dan akan melanjutkan pendidikan kejenjang yang lebih tinggi. 
-                                Terus raih mimpi dan masa depan yang cerah! 🌟
-                            </p>
-                        </div>
+                <div class="p-6 bg-emerald-50 rounded-3xl border border-emerald-100 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <svg class="w-16 h-16 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="relative z-10">
+                        <h4 class="font-bold text-emerald-900 mb-2 flex items-center gap-2">
+                             Masa Depan Menanti!
+                        </h4>
+                        <p class="text-emerald-800/80 text-sm leading-relaxed">
+                            Selamat atas kelulusan Anda! Ini adalah awal dari perjalanan panjang menuju kesuksesan. Teruslah belajar dan berkarya untuk nusa dan bangsa.
+                        </p>
                     </div>
                 </div>
                 
                 <!-- Action Button -->
                 <div class="mt-8">
-                    <a href="{{ route('home') }}" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 text-center">
-                        Cari Peserta Lain
+                    <a href="{{ route('home') }}" class="block w-full bg-gray-900 hover:bg-black text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 text-center shadow-xl shadow-gray-200">
+                        Cek Peserta Lain
                     </a>
                 </div>
             </div>
         </div>
         
         @else
-        <!-- TIDAK LULUS State -->
-        <div class="card-glass rounded-3xl overflow-hidden glow-effect">
-            <!-- Failed Header -->
-            <div class="status-tidak-lulus px-8 py-10 text-center">
-                <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-4">
-                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
+        <!-- TIDAK LULUS State - Soft & Encouraging -->
+        <div class="card-glass rounded-[2.5rem] overflow-hidden glow-effect border-0">
+            <div class="status-tidak-lulus px-6 py-10 text-center relative overflow-hidden">
+                <div class="relative z-10">
+                    <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-md rounded-full mb-4">
+                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-white mb-2">Mohon Maaf</h2>
+                    <p class="text-white/90 text-sm font-medium uppercase tracking-widest">
+                        Anda Belum Berhasil
+                    </p>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">
-                    Mohon Maaf 😔
-                </h2>
-                <p class="text-white/90 text-base">
-                    Anda Belum Berhasil
-                </p>
             </div>
             
-            <!-- Student Info -->
-            <div class="p-8">
-                <div class="space-y-4">
-                    <div class="bg-gray-50 rounded-2xl p-5">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
-                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
-                                </svg>
-                            </div>
-                            <span class="text-gray-500 text-sm font-medium">NISN</span>
-                        </div>
-                        <div class="text-xl font-bold text-gray-800">{{ $siswa['nisn'] }}</div>
-                    </div>
-                    
-                    <div class="bg-gray-50 rounded-2xl p-5">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
-                                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                </svg>
-                            </div>
-                            <span class="text-gray-500 text-sm font-medium">Nama Peserta</span>
-                        </div>
-                        <div class="text-lg font-bold text-gray-800">{{ $siswa['nama'] }}</div>
+            <div class="px-6 sm:px-10 py-8 bg-white text-center">
+                <div class="max-w-sm mx-auto mb-8">
+                    <div class="bg-gray-50 rounded-2xl p-6 mb-4 border border-gray-100">
+                        <span class="text-gray-400 text-[10px] uppercase font-bold tracking-widest block mb-1 text-center">Nama Peserta</span>
+                        <div class="text-xl font-bold text-gray-800">{{ $siswa['nama'] }}</div>
                     </div>
                 </div>
-                
-                <!-- Encouragement Message -->
-                <div class="mt-6 p-5 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl border border-amber-100">
-                    <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-amber-800 mb-1">Tetap Semangat!</h4>
-                            <p class="text-gray-600 text-sm">
-                                Jangan berkecil hati. Tetap berusaha dan coba lagi tahun depan. 
-                                Kami percaya Anda bisa mencapai mimpi Anda! 💪
-                            </p>
-                        </div>
-                    </div>
+
+                <div class="p-6 bg-amber-50 rounded-3xl border border-amber-100">
+                    <h4 class="font-bold text-amber-900 mb-2">Jangan Menyerah!</h4>
+                    <p class="text-amber-800/80 text-sm leading-relaxed">
+                        Kegagalan hanyalah kesuksesan yang tertunda. Tetap semangat, terus mencoba, dan jangan biarkan semangatmu padam. Kami percaya pada potensimu! 💪
+                    </p>
                 </div>
                 
-                <!-- Action Button -->
                 <div class="mt-8">
-                    <a href="{{ route('home') }}" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 text-center">
-                        Cari Peserta Lain
+                    <a href="{{ route('home') }}" class="block w-full bg-gray-900 hover:bg-black text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 text-center shadow-xl shadow-gray-200">
+                        Kembali Ke Beranda
                     </a>
                 </div>
             </div>
@@ -191,9 +134,9 @@
     </div>
 
     <!-- Footer -->
-    <footer class="mt-12 text-center relative z-10">
-        <p class="text-blue-200/60 text-sm">
-            © 2026 SMKS Muhammadiyah 1 Genteng. All rights reserved.
+    <footer class="mt-auto pt-8 text-center relative z-10">
+        <p class="text-blue-100/40 text-xs">
+            © 2026 SMKS Muhammadiyah 1 Genteng.
         </p>
     </footer>
 </div>
