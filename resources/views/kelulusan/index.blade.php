@@ -29,7 +29,7 @@
         </h1>
         
         <p class="text-blue-100/70 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed px-4">
-            Selamat kepada seluruh siswa kelas 12. Teruslah bermimpi besar dan berjuang untuk masa depan gemilang!
+            Selamat seluruh murid kelas XII, satu perjalanan usai, perjalanan lain sudah menunggu. Teruslah bermimpi besar dan berjuang untuk masa depan gemilang!
         </p>
     </div>
 
