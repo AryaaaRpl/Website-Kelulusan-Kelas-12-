@@ -62,7 +62,7 @@
                                         <div class="text-lg font-mono font-bold text-blue-300">{{ $siswa['nisn'] }}</div>
                                     </div>
                                     <div>
-                                        <div class="text-[10px] text-blue-100/20 font-bold uppercase mb-1">Program Keahlian</div>
+                                        <div class="text-[10px] text-blue-100/20 font-bold uppercase mb-1">Konsentrasi Keahlian</div>
                                         <div class="text-lg font-bold text-white leading-tight">{{ $siswa['sekolah'] }}</div>
                                     </div>
                                 </div>
