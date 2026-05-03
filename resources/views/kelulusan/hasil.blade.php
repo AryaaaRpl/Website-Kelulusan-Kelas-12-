@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
-                        <span class="text-gray-400 text-[10px] uppercase font-bold tracking-widest block mb-1">Program Keahlian</span>
+                        <span class="text-gray-400 text-[10px] uppercase font-bold tracking-widest block mb-1">Konsentrasi Keahlian</span>
                         <div class="text-sm font-bold text-gray-800">{{ $siswa['sekolah'] }}</div>
                     </div>
                 </div>
